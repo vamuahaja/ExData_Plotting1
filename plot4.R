@@ -11,11 +11,11 @@ household_power_consumption  = read.csv.sql('household_power_consumption.txt', h
 ano <- substr(household_power_consumption$Date, 7, 8)
 diaMes <- substr(household_power_consumption$Date, 1,4)
 household_power_consumption$myDate <- paste(diaMes, ano, sep = '')
-household_power_consumption$myDate <- as.Date(myDate)
 
 #Joining date and hour
 attach(household_power_consumption)
 household_power_consumption$dataHora <- paste(myDate, Time)
+attach(household_power_consumption)
 household_power_consumption$dataHora <- strptime(dataHora, '%d/%m/%y %H:%M:%S')
 
 #Multiples times series plots by row
